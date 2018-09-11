@@ -1,0 +1,21 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+groupshared uint OutSum[1];
+ 
+[numthreads(1,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID, uint groupIndex : SV_GroupIndex)
+{
+    InterlockedAdd(OutSum[0], 1);
+}
+
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel BufferCopy
+
+RWStructuredBuffer<uint> Output;
+
+[numthreads(1,1,1)]
+void BufferCopy (uint3 id : SV_DispatchThreadID, uint groupIndex : SV_GroupIndex)
+{
+
+}
